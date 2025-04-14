@@ -69,7 +69,7 @@ ui <- fluidPage(
       #  condition = "input.source_type == 'googledrive'",
        # shiny::textInput(inputId = "googledrive_link",
         #                 label = "Link to Google Drive spreadsheet",
-         #                value = "https://docs.google.com/spreadsheets/d/1swT8SNq9uOxe7AVP6zMxqvS5L5oNodd9Pu9C4iIkfgs/edit?gid=0#gid=0"),
+         #                value = ""),# add google sheet link here
     #    shiny::helpText("Note: the Google Drive spreadsheet must be visibile by anyone with the link; to have a properly structured spreadsheet, the easiest way is to copy the example document: 'File' -> 'Create a copy'")
      # ),
      # conditionalPanel(
@@ -202,7 +202,7 @@ server <- function(input, output, session) {
      # } else 
      # if (input$source_type=="googledrive") {
         googlesheets4::gs4_deauth()
-        googlesheets4::read_sheet(ss = "https://docs.google.com/spreadsheets/d/1swT8SNq9uOxe7AVP6zMxqvS5L5oNodd9Pu9C4iIkfgs/edit?gid=0#gid=0",#input$googledrive_link,
+        googlesheets4::read_sheet(ss = "",# enter google sheet name here #input$googledrive_link,
                                   sheet = 1,
                                   col_names = TRUE,na =c("","NA","na"),
                                   col_types = "c")%>%dplyr::filter(!is.na(start_date),!is.na(end_date))
